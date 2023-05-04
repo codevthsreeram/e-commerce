@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand" routerLink="/">
+            <i class="fab fa-pagelines"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/shopping-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge rounded-pill bg-warning text-dark">{{shoppingCartItemCount}}</span>
+                    </a>
+                </li>
+                <ng-template #anonymousUser>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/login">Login</a>
+                    </li>
+                </ng-template>
+
+                <li *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{appUser.displayName}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" routerLink="/my/orders">My Orders</a></li>
+                        <li><a class="dropdown-item" routerLink="/my/dashboard">My Dashboard</a></li>
+                        <ng-container *ngIf="appUser.isAdmin">
+                            <li><a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a></li>
+                            <li><a class="dropdown-item" routerLink="/admin/products">Manage Products</a></li>
+                            <li><a class="dropdown-item" routerLink="/admin/dashboard">Admin Dashboard</a></li>
+                        </ng-container>
+
+                        <li><a class="dropdown-item" style="cursor:pointer" (click)="logOut()">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>

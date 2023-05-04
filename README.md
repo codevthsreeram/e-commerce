@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Deploy app into firebase
+
+Step 1 : npm install -g firebase-tools
+Step 2 : firebase login (already loggedIn : firebase logout)
+Step 3 : firebase init hosting
+Step 4 : ng build --configuration production
+Step 5 : firebase deploy
